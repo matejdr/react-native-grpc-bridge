@@ -1,0 +1,63 @@
+buildscript {
+    if (project == rootProject) {
+        repositories {
+            google()
+            jcenter()
+            mavenCentral()
+            mavenLocal()
+        }
+
+        dependencies {
+            classpath 'com.android.tools.build:gradle:4.2.2'
+        }
+    }
+}
+
+apply plugin: 'com.android.library'
+
+def safeExtGet(prop, fallback) {
+    rootProject.ext.has(prop) ? rootProject.ext.get(prop) : fallback
+}
+
+android {
+    compileSdkVersion safeExtGet('GrpcBridge_compileSdkVersion', 29)
+    defaultConfig {
+        minSdkVersion safeExtGet('GrpcBridge_minSdkVersion', 16)
+        targetSdkVersion safeExtGet('GrpcBridge_targetSdkVersion', 29)
+        versionCode 1
+        versionName "1.0"
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+        }
+    }
+    lintOptions {
+        disable 'GradleCompatible'
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+repositories {
+    mavenLocal()
+    maven {
+        // All of React Native (JS, Obj-C sources, Android binaries) is installed from npm
+        url("$rootDir/../node_modules/react-native/android")
+    }
+    google()
+    mavenCentral()
+    jcenter()
+}
+
+dependencies {
+    //noinspection GradleDynamicVersion
+    implementation 'io.grpc:grpc-okhttp:1.44.1'// CURRENT_GRPC_VERSION
+    implementation 'io.grpc:grpc-stub:1.44.1' // CURRENT_GRPC_VERSION
+
+    implementation "com.facebook.react:react-native:+"  // From node_modules
+}
