@@ -50,7 +50,6 @@ class NativeGRPC implements grpc.Transport {
           response &&
           ['unary', 'serverStreaming'].indexOf(this.methodType) !== -1
         ) {
-          console.log('finish sendMessage');
           this.call.finishSendMessage();
         }
       })
@@ -61,7 +60,6 @@ class NativeGRPC implements grpc.Transport {
   }
 
   finishSend() {
-    console.log('finish finishSend');
     // this.call.finishSendMessage();
   }
 
