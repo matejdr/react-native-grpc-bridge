@@ -151,5 +151,9 @@
         }
       ]
     ]
+  },
+  "directories": {
+    "example": "example",
+    "lib": "lib"
   }
 }
