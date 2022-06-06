@@ -1,6 +1,6 @@
 {
   "name": "@matejdr/react-native-grpc-bridge",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "A bridge for @improbable-eng/grpc-web using native gRPC",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
