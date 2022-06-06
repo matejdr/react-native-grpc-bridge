@@ -559,14 +559,14 @@ PODS:
     - DoubleConversion
     - glog
   - glog (0.3.5)
-  - gRPC (1.44.0):
-    - gRPC/GRPCCore (= 1.44.0)
-    - gRPC/Interface (= 1.44.0)
-    - gRPC/Interface-Legacy (= 1.44.0)
-  - gRPC-Core (1.44.0):
-    - gRPC-Core/Implementation (= 1.44.0)
-    - gRPC-Core/Interface (= 1.44.0)
-  - gRPC-Core/Implementation (1.44.0):
+  - gRPC (1.46.3):
+    - gRPC/GRPCCore (= 1.46.3)
+    - gRPC/Interface (= 1.46.3)
+    - gRPC/Interface-Legacy (= 1.46.3)
+  - gRPC-Core (1.46.3):
+    - gRPC-Core/Implementation (= 1.46.3)
+    - gRPC-Core/Interface (= 1.46.3)
+  - gRPC-Core/Implementation (1.46.3):
     - abseil/base/base (= 1.20211102.0)
     - abseil/base/core_headers (= 1.20211102.0)
     - abseil/container/flat_hash_map (= 1.20211102.0)
@@ -586,24 +586,24 @@ PODS:
     - abseil/types/variant (= 1.20211102.0)
     - abseil/utility/utility (= 1.20211102.0)
     - BoringSSL-GRPC (= 0.0.24)
-    - gRPC-Core/Interface (= 1.44.0)
+    - gRPC-Core/Interface (= 1.46.3)
     - Libuv-gRPC (= 0.0.10)
-  - gRPC-Core/Interface (1.44.0)
-  - gRPC-RxLibrary (1.44.0):
-    - gRPC-RxLibrary/Implementation (= 1.44.0)
-    - gRPC-RxLibrary/Interface (= 1.44.0)
-  - gRPC-RxLibrary/Implementation (1.44.0):
+  - gRPC-Core/Interface (1.46.3)
+  - gRPC-RxLibrary (1.46.3):
+    - gRPC-RxLibrary/Implementation (= 1.46.3)
+    - gRPC-RxLibrary/Interface (= 1.46.3)
+  - gRPC-RxLibrary/Implementation (1.46.3):
     - gRPC-RxLibrary/Interface
-  - gRPC-RxLibrary/Interface (1.44.0)
-  - gRPC/GRPCCore (1.44.0):
-    - gRPC-Core (= 1.44.0)
-    - gRPC-RxLibrary (= 1.44.0)
-    - gRPC/Interface (= 1.44.0)
-    - gRPC/Interface-Legacy (= 1.44.0)
-  - gRPC/Interface (1.44.0):
-    - gRPC/Interface-Legacy (= 1.44.0)
-  - gRPC/Interface-Legacy (1.44.0):
-    - gRPC-RxLibrary/Interface (= 1.44.0)
+  - gRPC-RxLibrary/Interface (1.46.3)
+  - gRPC/GRPCCore (1.46.3):
+    - gRPC-Core (= 1.46.3)
+    - gRPC-RxLibrary (= 1.46.3)
+    - gRPC/Interface (= 1.46.3)
+    - gRPC/Interface-Legacy (= 1.46.3)
+  - gRPC/Interface (1.46.3):
+    - gRPC/Interface-Legacy (= 1.46.3)
+  - gRPC/Interface-Legacy (1.46.3):
+    - gRPC-RxLibrary/Interface (= 1.46.3)
   - Libuv-gRPC (0.0.10):
     - Libuv-gRPC/Implementation (= 0.0.10)
     - Libuv-gRPC/Interface (= 0.0.10)
@@ -776,7 +776,7 @@ PODS:
     - React-cxxreact (= 0.63.4)
     - React-jsi (= 0.63.4)
   - React-jsinspector (0.63.4)
-  - react-native-grpc-bridge (0.1.0):
+  - react-native-grpc-client (0.2.2):
     - gRPC
     - React-Core
   - React-RCTActionSheet (0.63.4):
@@ -859,7 +859,7 @@ DEPENDENCIES:
   - React-jsi (from `../node_modules/react-native/ReactCommon/jsi`)
   - React-jsiexecutor (from `../node_modules/react-native/ReactCommon/jsiexecutor`)
   - React-jsinspector (from `../node_modules/react-native/ReactCommon/jsinspector`)
-  - react-native-grpc-bridge (from `../..`)
+  - "react-native-grpc-client (from `../node_modules/@matejdr/react-native-grpc-client`)"
   - React-RCTActionSheet (from `../node_modules/react-native/Libraries/ActionSheetIOS`)
   - React-RCTAnimation (from `../node_modules/react-native/Libraries/NativeAnimation`)
   - React-RCTBlob (from `../node_modules/react-native/Libraries/Blob`)
@@ -913,8 +913,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/jsiexecutor"
   React-jsinspector:
     :path: "../node_modules/react-native/ReactCommon/jsinspector"
-  react-native-grpc-bridge:
-    :path: "../.."
+  react-native-grpc-client:
+    :path: "../node_modules/@matejdr/react-native-grpc-client"
   React-RCTActionSheet:
     :path: "../node_modules/react-native/Libraries/ActionSheetIOS"
   React-RCTAnimation:
@@ -947,9 +947,9 @@ SPEC CHECKSUMS:
   FBReactNativeSpec: f2c97f2529dd79c083355182cc158c9f98f4bd6e
   Folly: b73c3869541e86821df3c387eb0af5f65addfab4
   glog: 40a13f7840415b9a77023fbcae0f1e6f43192af3
-  gRPC: f28b04db68d04d7c7be78bc5c721b7729a253521
-  gRPC-Core: 943e491cb0d45598b0b0eb9e910c88080369290b
-  gRPC-RxLibrary: c98028f0fd838a01aee3afd7b16a1a3a57978552
+  gRPC: 0f41467c2efc8a9c087d297ff3fd3e16578533b9
+  gRPC-Core: fc69c736b69e9987514e126b5cd4b97cec0a360f
+  gRPC-RxLibrary: 66fe936f2400f115e768c3d19bfaf7bf5804780b
   Libuv-gRPC: 55e51798e14ef436ad9bc45d12d43b77b49df378
   RCTRequired: 082f10cd3f905d6c124597fd1c14f6f2655ff65e
   RCTTypeSafety: 8c9c544ecbf20337d069e4ae7fd9a377aadf504b
@@ -961,7 +961,7 @@ SPEC CHECKSUMS:
   React-jsi: a0418934cf48f25b485631deb27c64dc40fb4c31
   React-jsiexecutor: 93bd528844ad21dc07aab1c67cb10abae6df6949
   React-jsinspector: 58aef7155bc9a9683f5b60b35eccea8722a4f53a
-  react-native-grpc-bridge: 15c8906ce5995214e45afd53bddfefe040b8b3ae
+  react-native-grpc-client: 063e0ff70d3d53028d656f0c09594f19ce974b56
   React-RCTActionSheet: 89a0ca9f4a06c1f93c26067af074ccdce0f40336
   React-RCTAnimation: 1bde3ecc0c104c55df246eda516e0deb03c4e49b
   React-RCTBlob: a97d378b527740cc667e03ebfa183a75231ab0f0
@@ -974,6 +974,6 @@ SPEC CHECKSUMS:
   ReactCommon: 73d79c7039f473b76db6ff7c6b159c478acbbb3b
   Yoga: 4bd86afe9883422a7c4028c00e34790f560923d6
 
-PODFILE CHECKSUM: f93529e7f370b9dcc31bc67d6a1177b8dfc36bd3
+PODFILE CHECKSUM: 5e530863812c4c759de9e1e466a4b919d5762c71
 
 COCOAPODS: 1.11.2

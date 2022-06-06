@@ -13,7 +13,7 @@ RUN mkdir -p /usr/bin/protoc \
 # Install go packages (Should this use go-wrapper according to docker hub instructions?)
 RUN go get -u google.golang.org/grpc \
   && go get -u github.com/golang/protobuf/proto \
-  && go get -u github.com/golang/protobuf/protoc-gen-go
+  && go install github.com/golang/protobuf/protoc-gen-go@latest
 
 # Copy the code
 WORKDIR /go/src/github.com/matejdr/react-native-grpc-web-demo/echoserver/echo

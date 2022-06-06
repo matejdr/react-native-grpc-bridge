@@ -20,6 +20,12 @@ or
 nvm use
 ```
 
+### Install npm packages
+
+```sh
+yarn install
+```
+
 ## Usage
 
 ```js
@@ -34,10 +40,12 @@ There is an envoy proxy in front of go server.
 
 ```sh
 cd server
-docker-compose up server envoy --build
+docker-compose up --build server envoy
 ```
 
 ## Running a gRPC Server manually
+
+You can also run the grpc server manually using the following instructions.
 
 ### Install protoc
 
@@ -48,7 +56,7 @@ docker-compose up server envoy --build
 ```sh
 go get -u google.golang.org/grpc
 go get -u github.com/golang/protobuf/proto
-go get -u github.com/golang/protobuf/protoc-gen-go
+go install github.com/golang/protobuf/protoc-gen-go@latest
 export PATH=$HOME/go/bin:$PATH
 ````
 
@@ -59,12 +67,6 @@ GROC_WEB_PLUGIN=protoc-gen-grpc-web-1.0.6-darwin-x86_64
 curl -OL https://github.com/grpc/grpc-web/releases/download/1.0.6/$GROC_WEB_PLUGIN
 sudo mv $GROC_WEB_PLUGIN /usr/local/bin/protoc-gen-grpc-web
 chmod +x /usr/local/bin/protoc-gen-grpc-web
-```
-
-### Install npm packages
-
-```sh
-yarn install
 ```
 
 ### Generate stubs for js and go

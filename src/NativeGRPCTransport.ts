@@ -1,8 +1,12 @@
 import { grpc } from '@improbable-eng/grpc-web';
 import url from 'url';
-import type { GrpcCall } from './GrpcCall';
-import type { GrpcConfig, GrpcMetadata, GrpcMethodType } from './types';
-import { GrpcClientImpl } from './GrpcClient';
+import {
+  GrpcClientImpl,
+  GrpcConfig,
+  GrpcMetadata,
+  GrpcMethodType,
+  GrpcCall,
+} from '@matejdr/react-native-grpc-client';
 
 export function NativeGRPCTransport(
   init: grpc.XhrTransportInit
@@ -60,7 +64,13 @@ class NativeGRPC implements grpc.Transport {
   }
 
   finishSend() {
-    // this.call.finishSendMessage();
+    // if (
+    //   this.call &&
+    //   ['unary', 'serverStreaming'].indexOf(this.methodType) === -1
+    // ) {
+    //   this.call.finishSendMessage();
+    // }
+    this.call.finishSendMessage();
   }
 
   start(metadata: grpc.Metadata) {
@@ -119,10 +129,10 @@ class NativeGRPC implements grpc.Transport {
     // console.log('statusOfCall', statusOfCall);
 
     this.call.headers
-      .then((headers) => {
-        this.options.debug && console.log('NativeGRPC.headers', headers);
+      .then((hgrpcHaders) => {
+        this.options.debug && console.log('NativeGRPC.headers', hgrpcHaders);
         this.options.onHeaders(
-          new grpc.Metadata({ 'grpc-status': '0', ...headers }),
+          new grpc.Metadata({ 'grpc-status': '0', ...hgrpcHaders }),
           200
         );
       })

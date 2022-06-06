@@ -29,8 +29,8 @@ export default () => {
     try {
       setResponse([]);
 
-      const url = 'http://192.168.0.165:9000';
-      // const url = 'http://192.168.0.165:9010';
+      const url = 'http://192.168.0.166:9000';
+      // const url = 'http://192.168.0.166:9010';
       const service = new EchoClient(url);
 
       const request = new EchoRequest();
@@ -58,7 +58,7 @@ export default () => {
     try {
       setResponse([]);
 
-      const url = 'http://192.168.0.165:9000';
+      const url = 'http://192.168.0.166:9000';
       console.log('url', url);
       const service = new EchoClient(url);
 
@@ -97,7 +97,7 @@ export default () => {
     try {
       setResponse([]);
 
-      const url = 'http://192.168.0.165:9000';
+      const url = 'http://192.168.0.166:9000';
       console.log('url', url);
       const service = new EchoClient(url);
 
@@ -154,6 +154,57 @@ export default () => {
     }
   }
 
+  async function sendClientStreamingEcho() {
+    console.log('running again');
+    try {
+      setResponse([]);
+
+      const url = 'http://192.168.0.166:9000';
+      console.log('url', url);
+      const service = new EchoClient(url);
+
+      const metadata = {
+        // 'custom-header-1': 'value1',
+      } as any;
+      const clientStreamingEcho = service.clientStreamingEcho(metadata);
+      clientStreamingEcho.on('end', (status) => {
+        console.log('on end', status);
+        setResponse((arr) => [
+          ...arr,
+          `on end: ${status && JSON.stringify(status)}`,
+        ]);
+      });
+      clientStreamingEcho.on('status', (status) => {
+        console.log('on status', status);
+        setResponse((arr) => [
+          ...arr,
+          `on end: ${status && JSON.stringify(status)}`,
+        ]);
+      });
+
+      const request = new EchoRequest();
+      request.setMessage('This is BidirectionalStreaming message number: 1.');
+      clientStreamingEcho.write(request);
+      // clientStreamingEcho.end();
+      setIntervalX(
+        (x) => {
+          console.log('sending message: ', x);
+          const request = new EchoRequest();
+          request.setMessage(`This is message number: ${x}.`);
+          clientStreamingEcho.write(request);
+        },
+        (x) => {
+          console.log('closing connection after repeats: ', x);
+          clientStreamingEcho.end();
+        },
+        5000,
+        2
+      );
+    } catch (e) {
+      console.error('error', e);
+    }
+  }
+
   return (
     <View>
       <Text style={{ textAlign: 'center', marginTop: 20 }}>
@@ -174,6 +225,12 @@ export default () => {
       <Button
         onPress={() => sendBidirectionalStreamingEcho()}
         title="Send bidirectionalStreamingEcho!"
+        color="#841584"
+        accessibilityLabel="Lets hit that grpc server"
+      />
+      <Button
+        onPress={() => sendClientStreamingEcho()}
+        title="Send clientStreamingEcho!"
         color="#841584"
         accessibilityLabel="Lets hit that grpc server"
       />

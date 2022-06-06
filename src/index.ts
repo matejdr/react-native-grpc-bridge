@@ -1,5 +1,2 @@
-export { GrpcClientImpl } from './GrpcClient';
-export * from './types';
-export * from './GrpcCall';
-export * from './GrpcError';
+export * from '@matejdr/react-native-grpc-client';
 export { NativeGRPCTransport } from './NativeGRPCTransport';
